@@ -4,7 +4,16 @@ import matplotlib.pyplot as plt
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-tst = sigmoid(np.array([-1,0,1]))
+
+arr13 = [-1, 0, 1]
+tst = sigmoid(np.array(arr13))
+print("arr13")
+print(arr13)
+print("after sigmoid")
 print(tst)
-tst = sigmoid(np.random.randn(3,3))
+matrix33 = np.random.randn(3, 3)
+print("matrix33")
+print(matrix33)
+print("after sigmoid")
+tst = sigmoid(matrix33)
 print(tst)
