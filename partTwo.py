@@ -36,10 +36,16 @@ class Neural_Network(object):
         self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)
         
     def forward(self, X):
-        #Propagate inputs though network
-        self.z2 = np.dot(X, self.W1)
+        if not verbose:
+            # Propagate inputs though network
+            self.z2 = np.dot(X, self.W1)
+            self.a2 = self.sigmoid(self.z2)
+            self.z3 = np.dot(self.a2, self.W2)
+            yHat = self.sigmoid(self.z3)
+        else:
+            # Propagate inputs though network
+            self.z2 = np.dot(X, self.W1)
 
-        if verbose:
             print("X")
             print(X)
             print("W1")
@@ -53,9 +59,8 @@ class Neural_Network(object):
                 plt.plot(self.z2)
                 plt.show()
 
-        self.a2 = self.sigmoid(self.z2)
+            self.a2 = self.sigmoid(self.z2)
 
-        if verbose:
             title = "a2 = sigmoid(z2)"
             print(title)
             print(self.a2)
@@ -65,9 +70,8 @@ class Neural_Network(object):
                 plt.plot(self.a2)
                 plt.show()
 
-        self.z3 = np.dot(self.a2, self.W2)
+            self.z3 = np.dot(self.a2, self.W2)
 
-        if verbose:
             print("W2")
             print(self.W2)
             title = "z3 = a2 . W2"
@@ -79,9 +83,9 @@ class Neural_Network(object):
                 plt.plot(self.z3)
                 plt.show()
 
-        yHat = self.sigmoid(self.z3)
+            yHat = self.sigmoid(self.z3)
 
-        if verbose:
+
             title = "yHat = sigmoid(z3)"
             print(title)
             print(yHat)
